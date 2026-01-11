@@ -125,11 +125,11 @@ This system assumes AI can be wrong.
 
 ## Sample Input/Output
 
-### Example 1: Valid but Ambiguous Input
+### Example 1: Well-Specified Input (High Confidence)
 
 **Input:**
 ```bash
-python -m src.main "Build a task management tool for small teams with task assignment and due dates"
+python -m src.main "Build a web-based task management system for small teams using a REST-based backend and a browser-based frontend. Users authenticate via login, create projects, assign tasks, track status (todo, in progress, completed), set deadlines, and receive deadline notifications. The system supports role-based access with admins managing users and projects. No mobile support is required. Initial version targets teams under 50 users."
 ```
 
 **Output:**
@@ -137,18 +137,43 @@ python -m src.main "Build a task management tool for small teams with task assig
 {
   "meta": {
     "source_types": ["text"],
-    "confidence_score": 0.5,
-    "ambiguities_detected": true
+    "confidence_score": 0.9,
+    "ambiguities_detected": false
   },
   "intent": {
-    "primary_goal": "Build a simple system",
-    "problem_statement": "Need to organize functionality",
-    "target_user": "General users"
+    "primary_goal": "Build a software system",
+    "problem_statement": "User described a system to be built",
+    "target_user": "End users"
   },
   "functional_requirements": [
     {
       "id": "FR-001",
-      "description": "Basic feature",
+      "description": "User login",
+      "priority": "must"
+    },
+    {
+      "id": "FR-002",
+      "description": "Status tracking",
+      "priority": "must"
+    },
+    {
+      "id": "FR-003",
+      "description": "Deadline management",
+      "priority": "must"
+    },
+    {
+      "id": "FR-004",
+      "description": "Notifications",
+      "priority": "must"
+    },
+    {
+      "id": "FR-005",
+      "description": "Role-based access",
+      "priority": "must"
+    },
+    {
+      "id": "FR-006",
+      "description": "Admin controls",
       "priority": "must"
     }
   ],
@@ -158,20 +183,20 @@ python -m src.main "Build a task management tool for small teams with task assig
     "design": []
   },
   "inputs_provided": {
-    "text_summary": "Build a task management tool for small teams with task assignment and due dates",
+    "text_summary": "Build a web-based task management system for small teams using a REST-based backend and a browser-based frontend. Users authenticate via login, create projects, assign tasks, track status (todo, in progress, completed), set deadlines, and receive deadline notifications. The system supports role-based access with admins managing users and projects. No mobile support is required. Initial version targets teams under 50 users.",
     "image_summary": "",
     "document_summary": ""
   },
   "expected_outputs": {
-    "deliverables": ["Working system"],
+    "deliverables": ["Working application"],
     "format": "Web application"
   },
-  "open_questions": ["Exact scope unclear"],
+  "open_questions": [],
   "rejection_reason": null
 }
 ```
 
-**Result:** Schema generated with moderate confidence (0.5), ambiguities flagged, no hallucinated features.
+**Result:** High confidence (0.9), no ambiguities detected. System extracted 6 specific functional requirements from the detailed description without hallucinating.
 
 ---
 

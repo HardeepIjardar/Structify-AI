@@ -1,0 +1,1 @@
+python -m src.main "Build a task management system for teams where users can create tasks, assign them to others, track progress, and manage deadlines. The system should be easy to use and suitable for general productivity needs."
