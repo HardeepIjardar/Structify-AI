@@ -200,7 +200,57 @@ python -m src.main "Build a web-based task management system for small teams usi
 
 ---
 
-### Example 2: Irrelevant/Motivational Input (Rejected)
+### Example 2: Moderate Confidence with Ambiguities
+
+**Input:**
+```bash
+python -m src.main "Build a task management system for teams where users can create tasks, assign them to others, track progress, and manage deadlines. The system should be easy to use and suitable for general productivity needs."
+```
+
+**Output:**
+```json
+{
+  "meta": {
+    "source_types": ["text"],
+    "confidence_score": 0.3,
+    "ambiguities_detected": true
+  },
+  "intent": {
+    "primary_goal": "Build a software system",
+    "problem_statement": "User described a system to be built",
+    "target_user": "End users"
+  },
+  "functional_requirements": [
+    {
+      "id": "FR-001",
+      "description": "Deadline management",
+      "priority": "must"
+    }
+  ],
+  "constraints": {
+    "technical": [],
+    "business": [],
+    "design": []
+  },
+  "inputs_provided": {
+    "text_summary": "Build a task management system for teams where users can create tasks, assign them to others, track progress, and manage deadlines. The system should be easy to use and suitable for general productivity needs.",
+    "image_summary": "",
+    "document_summary": ""
+  },
+  "expected_outputs": {
+    "deliverables": ["Working application"],
+    "format": "Web application"
+  },
+  "open_questions": ["Architecture unspecified"],
+  "rejection_reason": null
+}
+```
+
+**Result:** Lower confidence (0.3) due to vague terms like "easy to use" and missing architecture details. System flags ambiguity but still generates schema. Only 1 requirement extracted from keyword matching.
+
+---
+
+### Example 3: Irrelevant/Motivational Input (Rejected)
 
 **Input:**
 ```bash
