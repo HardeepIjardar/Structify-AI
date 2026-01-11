@@ -1,0 +1,36 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.env
+.env.*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Cache
+.cache/
+
+# Test / coverage artifacts
+.coverage
+htmlcov/
+
+# Local model / LLM artifacts (explicitly excluded)
+models/
+*.gguf
+*.bin
+
+# Runtime outputs
+output.json
