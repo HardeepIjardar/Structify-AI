@@ -123,37 +123,74 @@ This system assumes AI can be wrong.
 
 ---
 
-## Example Behavior
+## Sample Input/Output
 
-### Valid but Ambiguous Input
+### Example 1: Valid but Ambiguous Input
 
+**Input:**
+```bash
+python -m src.main "Build a task management tool for small teams with task assignment and due dates"
 ```
-Build a task management tool for small teams
+
+**Output:**
+```json
+{
+  "meta": {
+    "source_types": ["text"],
+    "confidence_score": 0.5,
+    "ambiguities_detected": true
+  },
+  "intent": {
+    "primary_goal": "Build a simple system",
+    "problem_statement": "Need to organize functionality",
+    "target_user": "General users"
+  },
+  "functional_requirements": [
+    {
+      "id": "FR-001",
+      "description": "Basic feature",
+      "priority": "must"
+    }
+  ],
+  "constraints": {
+    "technical": [],
+    "business": [],
+    "design": []
+  },
+  "inputs_provided": {
+    "text_summary": "Build a task management tool for small teams with task assignment and due dates",
+    "image_summary": "",
+    "document_summary": ""
+  },
+  "expected_outputs": {
+    "deliverables": ["Working system"],
+    "format": "Web application"
+  },
+  "open_questions": ["Exact scope unclear"],
+  "rejection_reason": null
+}
 ```
 
-Result:
-- Schema generated
-- Confidence score reduced
-- Ambiguities explicitly listed
-- No hallucinated features
+**Result:** Schema generated with moderate confidence (0.5), ambiguities flagged, no hallucinated features.
 
 ---
 
-### Irrelevant Input
+### Example 2: Irrelevant/Motivational Input (Rejected)
 
-```
-You are doing amazing, keep going!
+**Input:**
+```bash
+python -m src.main "You are doing amazing, keep going!"
 ```
 
-Result:
+**Output:**
 ```json
 {
   "rejection_reason": "Input rejected: confidence_score below actionable threshold"
 }
 ```
 
-No schema is returned.  
-Downstream systems are protected.
+**Result:** Input correctly identified as non-actionable and rejected. No schema returned.  
+Downstream systems are protected from meaningless input.
 
 ---
 
